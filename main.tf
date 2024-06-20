@@ -1,7 +1,7 @@
 resource "aws_launch_configuration" "web_server_as" {
     image_id           = "ami-0eaf7c3456e7b5b68"
     instance_type = "t2.micro"
-    key_name = "docker-pipeline"
+    key_name = "dock"
 }
    
 
@@ -9,7 +9,7 @@ resource "aws_launch_configuration" "web_server_as" {
   resource "aws_elb" "web_server_lb"{
      name = "web-server-lb"
      security_groups = [aws_security_group.web_server.id]
-     subnets = ["subnet-01801d057d263ad13", "subnet-0bcc1a1ec83ddb757"]
+     subnets = ["subnet-0dd65b7a9de479e80", "subnet-07844150f6b16d4b1"]
      listener {
       instance_port     = 8000
       instance_protocol = "http"
@@ -28,7 +28,7 @@ resource "aws_autoscaling_group" "web_server_asg" {
     desired_capacity     = 2
     health_check_type    = "EC2"
     load_balancers       = [aws_elb.web_server_lb.name]
-    availability_zones    = ["us-east-1a", "us-east-1c"] 
+    availability_zones    = ["us-east-1c", "us-east-1d"] 
     
   }
 
