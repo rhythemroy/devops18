@@ -23,6 +23,12 @@ status = "Enabled"
 }
 }
 
-
+terraform {
+  backend "s3" {
+    bucket = "bunny.devops.bucket"
+    key = "prod/terraform.tfstate"
+    region = "us-east-1"
+  }
+}
 
 
