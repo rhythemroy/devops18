@@ -1,5 +1,5 @@
 resource "aws_s3_bucket" "one" {
-  bucket = "bunny.devops.bucket"
+  bucket = "batman.devops.bucket"
 }
 
 resource "aws_s3_bucket_ownership_controls" "two" {
@@ -25,7 +25,7 @@ status = "Enabled"
 
 terraform {
   backend "s3" {
-    bucket = "bunny.devops.bucket"
+    bucket = "batman.devops.bucket"
     key = "prod/terraform.tfstate"
     region = "us-east-1"
   }
